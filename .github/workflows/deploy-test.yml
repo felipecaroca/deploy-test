@@ -35,4 +35,4 @@ jobs:
             --platform managed \
             --region southamerica-west1 \
             --allow-unauthenticated \
-            --set-env-vars MY_ENV=${MY_ENV}, LALA=LALA
+            -e MY_ENV="${MY_ENV}" -e LALA=LALA

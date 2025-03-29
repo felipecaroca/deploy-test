@@ -35,5 +35,5 @@ jobs:
             --platform managed \
             --region southamerica-west1 \
             --allow-unauthenticated \
-            --set-build-env-vars MY_ENV="${MY_ENV}",LALA=LALA
+            --set-env-varss MY_ENV="${MY_ENV}",LALA=LALA
             

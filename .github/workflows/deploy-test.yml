@@ -12,19 +12,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Create files
-        run:  echo "${{ secrets.JSNON_SECRET }}" > test.json
+      - name: Verificar antes de crear
+        run: ls -l
 
-      - name: Verificar que el archivo .pem fue creado
-        run: ls -l .
+      - name: Create files
+        run:  echo "${{ secrets.JSON_SECRET }}" > test.json
+
+      - name: Verificar despues de crear
+        run: ls -l
 
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
-      - name: LALALAL
-        run: ls -l
 
       - name: Configure gcloud CLI
         run: |

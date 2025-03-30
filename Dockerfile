@@ -3,6 +3,8 @@ FROM python:3.10
 
 WORKDIR /app
 
+RUN ls -l .
+
 COPY . .
 
 RUN ls -l /app/

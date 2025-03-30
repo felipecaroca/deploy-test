@@ -6,7 +6,7 @@ WORKDIR /app
 RUN ls -l .
 
 COPY . .
-COPY ./test.json /app/test.json
+COPY ./test.json ./test.json
 
 RUN ls -l /app/
 

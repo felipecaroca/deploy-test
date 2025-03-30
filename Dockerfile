@@ -1,11 +1,14 @@
 FROM python:3.10
 
+RUN ls -l .
 
 WORKDIR /app
 
-RUN ls -l .
 
 COPY . .
+
+RUN ls -l .
+
 COPY ./test.json ./test.json
 
 RUN ls -l /app/

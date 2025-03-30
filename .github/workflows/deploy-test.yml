@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Create files
+        run:  echo "${{ secrets.JSNON_SECRET }}" > test.json
+
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1
         with:

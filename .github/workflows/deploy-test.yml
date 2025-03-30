@@ -35,11 +35,13 @@ jobs:
         run: |
           gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/flask-app
 
+      - name: ver archivos que se incluirán en docker
+        run: gcloud builds submit --dry-run --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/temp
+
       - name: Deploy to Cloud Run
         env:
           MY_ENV: ${{secrets.MY_ENV}}
         run: |
-         ls -l &&
           gcloud run deploy flask-app \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/flask-app \
             --platform managed \

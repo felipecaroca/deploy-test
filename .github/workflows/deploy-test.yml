@@ -39,7 +39,7 @@ jobs:
         env:
           MY_ENV: ${{secrets.MY_ENV}}
         run: |
-          echo "${{ secrets.JSON_SECRET }}" > test.json &&
+         ls -l &&
           gcloud run deploy flask-app \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/flask-app \
             --platform managed \

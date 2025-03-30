@@ -1,14 +1,9 @@
 FROM python:3.10
 
-RUN cd home && ls -l .
-RUN cd usr && ls -l .
 
 WORKDIR /app
 
-
 COPY . .
-
-RUN ls -l .
 
 COPY ./test.json ./test.json
 

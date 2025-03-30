@@ -15,6 +15,9 @@ jobs:
       - name: Create files
         run:  echo "${{ secrets.JSNON_SECRET }}" > test.json
 
+      - name: show directory
+        run: ls
+
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1
         with:

@@ -1,6 +1,7 @@
 FROM python:3.10
 
-RUN ls -l .
+RUN cd home && ls -l .
+RUN cd usr && ls -l .
 
 WORKDIR /app
 

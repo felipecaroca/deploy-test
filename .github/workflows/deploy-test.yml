@@ -15,8 +15,14 @@ jobs:
       - name: Create files
         run:  echo "${{ secrets.JSNON_SECRET }}" > test.json
 
+      - name: Verificar que el archivo .pem fue creado
+        run: ls -l test.json
+
+      - name: change permissions
+        run: chmod 644 test.json
+
       - name: show directory
-        run: ls
+        run: ls -l test.json
 
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1

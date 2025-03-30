@@ -4,6 +4,7 @@ FROM python:3.10
 WORKDIR /app
 
 COPY . .
+COPY test.json /app/test.json
 
 RUN pip install --no-cache-dir -r requirements.txt
 

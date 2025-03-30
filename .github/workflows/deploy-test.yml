@@ -16,7 +16,10 @@ jobs:
         run: ls -l
 
       - name: Create files
-        run:  echo "${{ secrets.JSON_SECRET }}" > test.json
+        run:  |
+          echo "${{ secrets.JSON_SECRET }}" > test.json
+          ls -la  # Debe mostrar test.json con permisos -rw-r--r--
+          file test.json  # Debe mostrar "ASCII text" o "JSON data"
 
       - name: Verificar despues de crear
         run: ls -l
@@ -30,9 +33,6 @@ jobs:
         run: |
           gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
           gcloud auth configure-docker us-central1-docker.pkg.dev
-
-      - name: ver archivos que se incluirán en docker
-        run: gcloud builds submit --dry-run --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/temp
           
       - name: Build and Push Docker Image
         run: |

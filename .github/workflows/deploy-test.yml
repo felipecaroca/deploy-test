@@ -12,22 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Verificar antes de crear
-        run: ls -l
-
       - name: Create files
         run:  |
-          echo "${{ secrets.JSON_SECRET }}" > test.json
-          ls -la  # Debe mostrar test.json con permisos -rw-r--r--
-          file test.json  # Debe mostrar "ASCII text" o "JSON data"
-      - name: Verify test.json
-        run: |
-          echo "=== Contenido de test.json ==="
-          cat test.json
-          echo "=== Hash del archivo ==="
-          sha256sum test.json
-          echo "=== Tamaño del archivo ==="
-          stat -c "%s" test.json
+          printf '%s\n' '${{ secrets.JSON_SECRET }}' > test.json
+          echo "=== Verificación ==="
+          python3 -c "import json; json.load(open('test.json'))" || echo "❌ JSON inválido"
 
       - name: Verificar despues de crear
         run: ls -l

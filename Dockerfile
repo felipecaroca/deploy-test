@@ -5,10 +5,6 @@ WORKDIR /app
 
 COPY . .
 
-COPY ./test.json ./test.json
-
-RUN ls -l /app/
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 ENV MY_ENV=lala
